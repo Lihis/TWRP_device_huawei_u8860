@@ -14,11 +14,11 @@
 # limitations under the License.
 #
 
-TARGET_OTA_ASSERT_DEVICE := u8800pro,U8800PRO
+TARGET_OTA_ASSERT_DEVICE := u8860,U8860
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 
 # Platform
-TARGET_BOOTLOADER_BOARD_NAME := u8800pro
+TARGET_BOOTLOADER_BOARD_NAME := u8860
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
@@ -61,19 +61,17 @@ BOARD_KERNEL_CMDLINE := console=ttyDCC0 androidboot.hardware=huawei
 BOARD_INSTALLER_CMDLINE := $(BOARD_KERNEL_CMDLINE)
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 4096
-#TARGET_KERNEL_SOURCE := device/huawei/kernel
-#TARGET_KERNEL_CONFIG := jellytime_defconfig
-TARGET_PREBUILT_KERNEL := device/huawei/u8800pro/kernel
-TARGET_PREBUILT_RECOVERY_KERNEL := device/huawei/u8800pro/kernel
+TARGET_PREBUILT_KERNEL := kernel/huawei/prebuilt/kernel
+TARGET_PREBUILT_RECOVERY_KERNEL := kernel/huawei/prebuilt/kernel
+#TARGET_KERNEL_SOURCE := kernel/huawei/android_huawei_kernel
+#TARGET_KERNEL_CONFIG := jellytime_recovery_defconfig
 
-#Add option to build TWRP with toolbox instead of busybox = Makes a smaller TWRP
-#Uses mksh for shell
-# TW_USE_TOOLBOX := true
 # Recovery
+TW_USE_TOOLBOX := false
 TW_NO_REBOOT_BOOTLOADER := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_INITRC := device/huawei/u8800pro/init.rc
-TARGET_RECOVERY_FSTAB := device/huawei/u8800pro/recovery.fstab
+TARGET_RECOVERY_INITRC := device/huawei/u8860/init.rc
+TARGET_RECOVERY_FSTAB := device/huawei/u8860/recovery.fstab
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_USES_MMCUTILS := true
@@ -98,4 +96,4 @@ RECOVERY_GRAPHICS_USE_LINELENGTH := true
 BOARD_RECOVERY_RMT_STORAGE := true
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTNESS := 255
-TW_BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/u8800pro/recovery/graphics.c
+TW_BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/u8860/recovery/graphics.c
